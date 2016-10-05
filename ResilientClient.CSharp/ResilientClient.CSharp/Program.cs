@@ -14,8 +14,7 @@ namespace ResilientClient.CSharp
             var actorSystem = ActorSystem.Create("AResilientRESTClient");
             var numberOfConsecutiveResults = 5;
             var client = actorSystem.ActorOf(Props.Create(() => new WhimsyClientActor(2*numberOfConsecutiveResults)), "WhimsyClientActor");
-            Console.WriteLine("Starting in 3 seconds.");
-          
+       
             Console.WriteLine("Press Return to exit:");
             Communicate(actorSystem, client);
             Console.ReadLine();
@@ -27,7 +26,7 @@ namespace ResilientClient.CSharp
             actorSystem
                 .Scheduler
                 .ScheduleTellRepeatedly(
-                TimeSpan.FromSeconds(3), 
+                TimeSpan.FromSeconds(0), 
                 TimeSpan.FromSeconds(1),
                 client,
                 GetDataAsync.Create(),

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Akka.Actor;
 using Akka.Event;
+using Akka.Pattern;
 using ResilientClient.CSharp.Messages;
 using WhimsyClient.CSharp.Client;
 using WhimsyClient.CSharp.Messages;
@@ -12,6 +13,7 @@ namespace ResilientClient.CSharp.Actors
     {
         private readonly ILoggingAdapter _log = Context.GetLogger();
         private readonly WhimsyHttpClient _whimsyHttpClient;
+        private readonly CircuitBreaker _breaker;
 
 
         public WhimsyClientActor(int clientPeriod)

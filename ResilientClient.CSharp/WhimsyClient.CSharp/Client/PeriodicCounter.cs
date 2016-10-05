@@ -11,6 +11,11 @@ namespace WhimsyClient.CSharp.Client
             _maxCounter = maxCounter;
         }
 
+        public override string ToString()
+        {
+            return $"{_currentCounter}/{_maxCounter}";
+        }
+
         internal void UpdateCounter()
         {
             _currentCounter += 1;
